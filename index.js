@@ -87,6 +87,6 @@ app.post('/api/enough', (req, res) => {
 
 
 
-app.listen(3000, function () {
-  console.log("Example add listening on port 3000");
+app.listen(port, () => {
+  console.log(`Example add listening on port ${port}!`);
 });
