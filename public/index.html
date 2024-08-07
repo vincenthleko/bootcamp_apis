@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="bootcampWidgets.js"></script>
+  </head>
+  <body>
+    <div class="widget" x-data="bootcampWidgets">
+      <!-- Section for analyzing a sentence -->
+       <h1>Bootcamp function widget</h1>
+
+       <h2>Word Analysis Widget</h2>
+      <div class="widget">
+        <div class="input-group">
+          <label for="sentenceInput">Enter Sentence:</label>
+          <input
+            type="text"
+            id="sentenceInput"
+            x-model="sentence"
+            placeholder="Type your sentence here..."
+          />
+        </div>
+        <button @click="analyzeSentence">Analyze Sentence</button>
+        <div x-show="longest" class="result">
+          <h3>Longest Word:</h3>
+          <pre x-text="longest"></pre>
+        </div>
+        <div x-show="shortest" class="result">
+          <h3>Shortest Word:</h3>
+          <pre x-text="shortest"></pre>
+        </div>
+        <div x-show="totalLengths > 0" class="result">
+          <h3>Total Word Count:</h3>
+          <pre x-text="totalLengths"></pre>
+        </div>
+        <div x-show="error" class="error">
+          <h3>Error:</h3>
+          <pre x-text="error"></pre>
+        </div>
+      </div>
+
+      <!-- Section for setting prices -->
+      <h2>Update Phone Bill Price</h2>
+      <div class="widget">
+        <div>
+          <label for="type">Type:</label>
+          <select x-model="type" id="type">
+            <option value="sms">SMS</option>
+            <option value="call">Call</option>
+          </select>
+        </div>
+        <div>
+          <label for="price">Price:</label>
+          <input
+            type="number"
+            x-model.number="price"
+            id="price"
+            step="0.01"
+            min="0"
+          />
+        </div>
+        <button @click="submitUpdate">Update Price</button>
+  
+        <p x-text="feedback"></p>
+      </div>
+      
+
+      <!-- Section for calculating total bill -->
+      <h2>Calculate Total Bill</h2>
+      <div class="widget">
+        <div class="input-group">
+          <label for="billString">Bill String:</label>
+          <input type="text" id="billString" x-model="billString" placeholder="e.g., call,sms,call"/>
+        </div>
+        <button @click="calculateTotal">Calculate Total</button>
+        <p x-text="totalBill"></p>
+      </div>
+
+      <!-- Section for calculating the usage -->
+      <h2>Phone Bill Usage Calculator</h2>
+      <div class="widget">
+        <form @submit.prevent="calculateBill">
+          <label for="usage">Usage:</label>
+          <input type="text" id="usage" x-model="usage" placeholder="e.g., call,sms,call" required />
+          <br /><br />
+          <label for="available">Available Balance:</label>
+          <input type="number" id="available" x-model="available" />
+          <br /><br />
+          <button type="submit">Calculate</button>
+        </form>
+        <p x-text="result"></p>
+      </div>
+    </div>
+  </body>
+</html>

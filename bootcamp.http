@@ -1,0 +1,37 @@
+GET http://localhost:3000/api/word_game?sentence='my name is vincent hleko' HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3000/api/phonebill/total HTTP/1.1
+content-type: application/json
+
+{
+ "bill": "call,sms,call"
+}
+
+###
+GET http://localhost:3000/api/phonebill/prices?call=1&sms=1 HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3000/api/phonebill/price HTTP/1.1
+content-type: application/json
+
+{
+  "type" : "sms",
+  "price" : 2.85
+}
+
+###
+POST http://localhost:3000/api/enough HTTP/1.1
+content-type: application/json
+
+{
+   "usage": "call,sms,call",
+   "available" : 54
+}
+
+
+
+
+ 
