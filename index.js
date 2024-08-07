@@ -59,6 +59,26 @@ app.get("/api/phonebill/prices", function (httpRequest, httpResponse) {
   });
 });
 
+//get total price for each
+const prices = {
+  call: "R2.75",
+  sms: "R0.65"
+};
+
+
+app.get('/api/phonebill/prices', (req, res) => {
+  
+  const call = req.query.call;
+  const sms = req.query.sms;
+
+  
+  if (call && sms) {
+      res.json(prices);
+  } else {
+      res.status(400).json({ error: 'Both call and sms parameters are required.' });
+  }
+});
+
 // set price section
 app.post("/api/phonebill/price", function (httpRequest, httpResponse) {
   const { type, price } = httpRequest.body;

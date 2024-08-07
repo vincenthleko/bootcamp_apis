@@ -47,6 +47,22 @@
         </div>
       </div>
 
+      <!-- check for prices -->
+      <h2>Check Phone Bill Prices</h2>
+      <div class="widget">
+        <button @click="fetchPrices">Get Prices</button>
+        <div x-show="loading">Loading...</div>
+        <div x-show="error" class="error">
+            <p>Error:</p>
+            <pre x-text="error"></pre>
+        </div>
+        <div x-show="prices.call && prices.sms" class="result">
+            <p>Prices:</p>
+            <p>Call: <span x-text="prices.call"></span></p>
+            <p>SMS: <span x-text="prices.sms"></span></p>
+        </div>
+    </div>
+
       <!-- Section for setting prices -->
       <h2>Update Phone Bill Price</h2>
       <div class="widget">
